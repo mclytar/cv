@@ -1,0 +1,112 @@
+\documentclass[10pt,a4paper,sans]{moderncv}
+
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+
+\usepackage{biblatex}
+\usepackage[utf8]{inputenc}
+\usepackage[scale=0.8]{geometry}
+
+\input{personaldata.tex}
+\bibliography{publications}
+
+\makeatletter
+\name{Gianluca}{Brian}
+\title{Curriculum Vitae}
+\email{\@@@email}
+\phone[mobile]{\@@@phone}
+\extrainfo{Date of birth: 05/06/1994}
+\social[github][github.com/mclytar]{github.com/mclytar}
+\makeatother
+
+\makeatletter\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}\makeatother
+
+\def\pplus{\texttt{++}}
+\def\sharp{\texttt{\#}}
+
+\renewcommand{\refname}{Research activities and publications}
+\DefineBibliographyExtras{english}{\let\finalandcomma=\empty}
+\newcommand{\pubitem}[1]{
+    \cvitem{\citefield{#1}{year}}{\textbf{\citefield{#1}{title}} (with \citename{#1}{author}), in \textit{\citefield{#1}{booktitle} } }
+}
+
+\begin{document}
+    \makecvtitle
+
+    \section{Education}
+    \cventry{2019--Now}{PhD in Computer Science}{Sapienza University of Rome, Italy}{A}{}{
+        Research topic: Cryptography\\
+        Advisor: \emph{Prof. Daniele Venturi}.\\
+    }
+    \cventry{2016--2019}{Master Degree in Mathematics}{Sapienza University of Rome, Italy}{}{}{
+        Final mark: \emph{106/110}\\
+        Thesis title: \emph{Non-malleable Secret Sharing under Selective Partitioning}.\\
+        Advisors: \emph{Prof. Claudia Malvenuto and Prof. Daniele Venturi}.\\
+        Description: \emph{We revisit bounded leakage-resilient secret sharing under selective partitioning, adding non-malleability at the cost of a slight loss in bits for the leakage resilience bound}.
+    }
+    \cventry{2013--2016}{Bachelor Degree in Mathematics}{Sapienza University of Rome, Italy}{}{}{
+        Final mark: \emph{105/110}\\
+        Thesis title (it): \emph{Complessit\`a e crittosistemi a chiave pubblica}.\\
+        Thesis title (en): \emph{Complexity and public key cryptosystems}.\\
+        Advisor: \emph{Prof. Alessandro D'Andrea}.\\
+        Description: \emph{A brief summary on the relation between hard-to-solve problems in mathematics (e.g. discrete logarithm and factorization) and public key cryptography}.
+    }
+
+    \nocite{*}
+    \section{Research activities and publications}
+    \pubitem{EUROCRYPT:BFORSSV21}
+    \pubitem{CRYPTO:BFOSV20}
+    \pubitem{TCC:BFV19}
+
+    %\section{Personal projects and professional experience}
+    %\cvitem{$\bullet$}{
+    %    Development of a web application to help the organization of the annual Christmas Show in the Mathematics department of my university,
+    %    with RESTful API and backend server in Rust, Actix-Web and Diesel-MySql.
+    %}
+    %\cvitem{$\bullet$}{
+    %    Minor full-stack web development experience, mainly PHP\texttt{+}Apache\texttt{+}MySql backend and HTML\texttt{+}CSS\texttt{+}JS/jQuery frontend.
+    %}
+
+    \section{Honors and awards}
+    \cvitem{2008--2013}{Participated in several mathematics challenges and olympic games (both alone and in team) during my high school years.}
+    \cvitem{2009}{I won the school competition and the semifinal of ``Mathematics Games'' (``Giochi matematici'') and participated in the national final at the Bocconi University of Milan.}
+
+    \section{Computer skills}
+    \cvitem{Programming}{
+        Fluent in Rust.
+        Good knowledge of C, C\pplus{} and Intel x86 Assembly programming languages, JavaScript and PHP scripting languages,
+        and, in no particular order, HTML, CSS/SASS, SQL, \LaTeX.
+        Basic knowledge of Fortran, Microsoft Visual Basic, Python and C\sharp{} (along with .Net framework).
+    }
+    \cvitem{}{
+        I also have experience with Arduino, both programming and circuit design.
+    }
+    \cvitem{Development tools}{
+        Good knowledge of Git and the Git workflow.
+        My main development tools include JetBrains IDEs (CLion, PhpStorm, WebStorm), Microsoft Visual Studio and Visual Studio Code, Powershell, Notepad\pplus.
+    }
+    \cvitem{Operating systems}{
+        Good knowledge of the Windows operating system and, in particular, Windows XP/7/8/10.
+        Basic knowledge of GNU/Linux and other UNIX-based OSes.
+    }
+
+    \section{Languages}
+    \cvitem{Italian}{Mother tongue.}
+    \cvitem{English}{Self-assessment (Common European Framework of Reference for Languages, CEFR).}
+    \cvitem{}{\begin{tabular}{l@{\hspace{.5cm}}l}
+        Reading: & C1 (Proficient user)\\
+        Listening: & C1 (Proficient user)\\
+        Writing: & C1 (Proficient user)\\
+        Speaking: & C1 (Proficient user)
+    \end{tabular}}
+
+    \section{Spare time activities}
+    \cvitem{Hobbies}{
+        Music: sometimes I play the electric guitar;
+        I also like listening to Hi-Fi music.
+    }
+    \cvitem{}{Videogames: mainly strategic and management videogames or racing simulations.}
+    \cvitem{}{Misc.: I am building an Intel 8086 computer from scratch, designing both motherboard and VGA card.}
+    \cvitem{Interests}{Programming, math and science in general.}
+
+\end{document}
