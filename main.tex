@@ -3,12 +3,14 @@
 \moderncvcolor{blue}
 \moderncvstyle{classic}
 
-\usepackage[maxnames=10]{biblatex}
+\usepackage[maxbibnames=99,defernumbers=true,sorting=ydnt]{biblatex}
+\nocite{*}
 \usepackage[utf8]{inputenc}
 \usepackage[scale=0.8]{geometry}
 
 \input{personaldata.tex}
-\bibliography{publications}
+% \bibliography{publications}
+\addbibresource{publications.bib}
 
 \setlength{\hintscolumnwidth}{3cm}
 
@@ -16,7 +18,7 @@
 \name{Gianluca}{Brian}
 \title{Curriculum Vitae}
 \email{\@@@email}
-\phone[mobile]{\@@@phone}
+% \phone[mobile]{\@@@phone}
 \extrainfo{
     Date of birth: 05/06/1994
 }
@@ -34,21 +36,65 @@
     \cvitem{\citefield{#1}{year}}{\textbf{\citefield{#1}{title}} (with \citename{#1}{author}), in \textit{\citefield{#1}{booktitle} } }
 }
 
+\makeatletter
+\newcommand{\citesinthissection}[1]{\xdef\@totalcites{#1}}
+% https://tex.stackexchange.com/q/123805/5764
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelnumberwidth]{% label format from numeric.bbx
+        \printfield{prefixnumber}%
+        \number\numexpr\@totalcites-\abx@field@labelnumber+1\relax}}
+     {\setlength{\topsep}{0pt}% layout parameters from moderncvstyleclassic.sty
+      \setlength{\labelwidth}{\hintscolumnwidth}%
+      \setlength{\labelsep}{\separatorcolumnwidth}%
+      \leftmargin\labelwidth%
+      \advance\leftmargin\labelsep}%
+      \sloppy\clubpenalty4000\widowpenalty4000}
+  {\endlist}
+  {\item}
+\makeatother
+
 \begin{document}
     \makecvtitle
     \section{Research interests}
     \cvitem{}{
-        I am interested in theoretical and applied cryptography.
-        Current topics include: constructive cryptography, leakage-resilience, non-malleability, secret sharing, type theory.
+        I am interested in theoretical and applied cryptography, with particular focus on side channel attacks and prevention.
+        Current topics include: information theory, leakage and fault resilience, constructive cryptography, modular designs.
     }
 
     \section{Current position}
-    \cventry{Jun 23 -- Now}{Postdoctoral Researcher}{ETH Zurich}{}{}{}
+    \cventry{Jun 25 -- Now}{Postdoctoral Researcher}{TU Darmstadt}{Germany}{}{
+        Supervisor: \emph{Prof. Sebastian Faust}\\
+    }
 
     \section{Previous positions}
-    \cventry{Mar 23 -- May 23}{Scientific Assistant}{ETH Zurich}{}{}{}
-    \cventry{Nov 21 -- Nov 22}{Visiting Researcher}{University of Warsaw, Poland}{}{}{}
-    \cventry{Nov 19 -- Jan 23}{Ph.D. student in Computer Science}{Sapienza University of Rome, Italy}{}{}{}
+    \cventry{Jun 23 -- May 25}{Postdoctoral Researcher}{ETH Zurich}{Switzerland}{}{
+        Supervisor: \emph{Prof. Ueli Maurer}\\
+    }
+    \cventry{Mar 23 -- May 23}{Scientific Assistant}{ETH Zurich}{Switzerland}{}{
+        Supervisor: \emph{Prof. Ueli Maurer}\\
+    }
+    \cventry{Nov 21 -- Nov 22}{Visiting Researcher}{University of Warsaw}{Poland}{}{
+        Supervisor: \emph{Prof. Stefan Dziembowski}\\
+    }
+
+    \section{Education}
+    \cventry{Nov 19 -- Jan 23}{Ph.D. in Computer Science}{Sapienza University of Rome, Italy}{}{}{
+        Final grade: \emph{pass (with honors)}\\
+        Thesis title: \emph{Non-malleable secret sharing against joint tampering attacks}\\
+        Supervisor: \emph{Prof. Daniele Venturi}
+    }
+    \cventry{Sep 16 -- Jul 19}{M.Sc. in Mathematics}{Sapienza University of Rome, Italy}{}{}{
+        Final grade: \emph{106/110}\\
+        Thesis title: \emph{Non-malleable Secret Sharing under Selective Partitioning}.\\
+        Advisors: \emph{Prof. Claudia Malvenuto and Prof. Daniele Venturi}.
+    }
+    \cventry{Sep 13 -- Dec 16}{B.Sc. in Mathematics}{Sapienza University of Rome, Italy}{}{}{
+        Final grade: \emph{105/110}\\
+        Thesis title: \emph{Complexity and public key cryptosystems}.\\
+        Advisor: \emph{Prof. Alessandro D'Andrea}.
+    }
+
     \section{Ph.D. Schools attended}
     \cventry{Apr 22}{IACR-Crossing School}{La Valletta, Malta}{}{}{
         Main topic: \emph{Combinatorial Techniques in Cryptography}
@@ -63,35 +109,82 @@
         Main topic: \emph{Information Theoretic Cryptography}
     }
 
-    \section{Education}
-    \cventry{Sep 16 -- Jul 19}{M. Sc. Mathematics}{Sapienza University of Rome, Italy}{}{}{
-        Final grade: \emph{106/110}\\
-        Thesis title: \emph{Non-malleable Secret Sharing under Selective Partitioning}.\\
-        Advisors: \emph{Prof. Claudia Malvenuto and Prof. Daniele Venturi}.\\
-    }
-    \cventry{Sep 13 -- Dec 16}{B. Sc. Mathematics}{Sapienza University of Rome, Italy}{}{}{
-        Final grade: \emph{105/110}\\
-        Thesis title: \emph{Complexity and public key cryptosystems}.\\
-        Advisor: \emph{Prof. Alessandro D'Andrea}.\\
-    }
+    \section{Teaching Experience}
+    \cventry{Spring 2025}{Co-organizer and student supervisor}{Current Topics in Cryptography Seminar}{ETH Zurich}{}{}
+    \cventry{Fall 2024}{Teaching Assistant}{Discrete Mathematics}{ETH Zurich}{}{}
+    \cventry{Spring 2024}{Student supervisor}{Current Topics in Cryptography Seminar}{ETH Zurich}{}{}
+    \cventry{Fall 2023}{Teaching Assistant}{Discrete Mathematics}{ETH Zurich}{}{}
+    \cventry{Spring 2023}{Student supervisor}{Current Topics in Cryptography Seminar}{ETH Zurich}{}{}
 
-    \nocite{*}
-    \section{Publications}
-    \pubitem{EUROCRYPT:BDF24}
-    \pubitem{AC:BFMV22}
-    \pubitem{ToSC:BFRV22}
-    \pubitem{TCC:BFV21}
-    \pubitem{EUROCRYPT:BFORSSV21}
-    \pubitem{CRYPTO:BFOSV20}
-    \pubitem{TCC:BFV19}
+    \section{Talks}
+    \subsection{Publications at conferences}
+    \cventry{May 24}{From Random Probing to Noisy Leakages Without Field-Size Dependence}
+    {Advances in Cryptology --- EUROCRYPT 2024: 43th Annual International Conference on the Theory and Applications of Cryptographic Techniques}
+    {Zurich, Switzerland}
+    {}{}
+    \cventry{Nov 21}{Continuously Non-malleable Secret Sharing: Joint Tampering, Plain Model and Capacity}
+    {Theory of Cryptography: 19th International Conference, TCC 2019}
+    {Raleigh, NC, USA (online talk)}
+    {}{}
+    \cventry{Oct 21}{The Mother of All Leakages: How to Simulate Noisy Leakages from Bounded Leakage (Almost) for Free}
+    {Advances in Cryptology --- EUROCRYPT 2021: 40th Annual International Conference on the Theory and Applications of Cryptographic Techniques}
+    {Zagreb, Croatia}
+    {}{}
+    \cventry{Aug 20}{Non-malleable Secret Sharing against Bounded Joint-Tampering Attacks in the Plain Model}
+    {Advances in Cryptology --- CRYPTO 2020: 40th Annual International Cryptology Conference}
+    {Virtual on Zoom}
+    {}{}
+    \cventry{Dec 19}{Continuously Non-malleable Secret Sharing for General Access Structures}
+    {Theory of Cryptography: 17th International Conference, TCC 2019}
+    {Nurnberg, Germany}
+    {}{}
 
-    \section{Selected Talks}
-    \cventry{2020}{Leakage-Resilient Non-Malleable Secret Sharing}{Seminar at De Cifris Schola Latina}{Virtual on Google Meet}{October 2020}{}
+    \subsection{Invited talks}
+    \cventry{Oct 24}{An overview of Side-Channel Security}
+    {Collaboration event with TU Darmstadt and University of Warsaw for the Copernicus Award celebration}
+    {Berlin, Germany}
+    {}{}
+    \cventry{Aug 24}{From Random Probing to Noisy Leakages Without Field-Size Dependence}
+    {Conference on Information Theoretic Cryptography (ITC 2024)}
+    {Palo Alto, CA, USA}
+    {}{}
+    \cventry{Oct 20}{Leakage-Resilient Non-Malleable Secret Sharing}
+    {Seminar at De Cifris Schola Latina}
+    {Virtual on Google Meet}
+    {}{}
+
+    \section{Other activities}
+    \subsection{Memberships}
+    \cvitem{2019 -- Now}{IACR Membership}
+    \subsection{External reviewer}
+    \cvitem{}{CRYPTO 2025, EUROCRYPT 2022, EUROCRYPT 2021}
+
+    \section{Scientific production}
+
+    \newrefcontext[labelprefix=c]
+    \citesinthissection{6}
+    \printbibliography[title={Publications in conferences},heading = subbibliography,keyword = conference]
+
+    \newrefcontext[labelprefix=j]
+    \citesinthissection{2}
+    \printbibliography[title={Publications in journals},heading = subbibliography,keyword = journal]
+
+    \newrefcontext[labelprefix=p]
+    \citesinthissection{0}
+    \printbibliography[title={Preprints},heading = subbibliography,keyword = preprint]
+
+    % \pubitem{EUROCRYPT:BDF24}
+    % \pubitem{AC:BFMV22}
+    % \pubitem{ToSC:BFRV22}
+    % \pubitem{TCC:BFV21}
+    % \pubitem{EUROCRYPT:BFORSSV21}
+    % \pubitem{CRYPTO:BFOSV20}
+    % \pubitem{TCC:BFV19}
 
     \section{Computer skills}
     \cvitem{Programming Languages}{
-        Fluent in Rust.
-        Good knowledge of C, C\pplus{}, Intel x86 Assembly.
+        Proficient in Rust.
+        Good knowledge of C, C\pplus{}, Assembly (x86, ARM), and the GNU GCC Toolchain.
         Basic knowledge of Visual Basic, Python, CUDA C, and C\sharp{}, in no particular order.
     }
     \cvitem{Typesetting}{
@@ -101,33 +194,23 @@
         Microsoft Office suite (Word, Excel, Power Point), JetBrains CLion/RustRover/WebStorm, MS Visual Studio, MS Visual Studio Code, Git, Powershell.
     }
     \cvitem{Misc.}{
-        Arduino (both programming and circuit design).
+        Embedded Systems development (including experience with Arduino and ChipWhisperer).
     }
     \cvitem{Operating systems}{
-        Windows, GNU/Linux
+        Windows, GNU/Linux.
     }
 
     \section{Languages}
-    \cvitem{Italian}{Mother tongue.}
-    \cvitem{English}{Self-assessment (Common European Framework of Reference for Languages, CEFR).}
-    \cvitem{}{\begin{tabular}{l@{\hspace{.5cm}}l}
-        Reading: & C1 (Proficient user)\\
-        Listening: & C1 (Proficient user)\\
-        Writing: & C1 (Proficient user)\\
-        Speaking: & C1 (Proficient user)
-    \end{tabular}}
-    \cvitem{Polish}{Self-assessment (Common European Framework of Reference for Languages, CEFR).}
-    \cvitem{}{\begin{tabular}{l@{\hspace{.5cm}}l}
-        Reading: & A1 (Basic user)\\
-        Listening: & A1 (Basic user)\\
-        Writing: & A1 (Basic user)\\
-        Speaking: & A1 (Basic user)
-    \end{tabular}}
+    \cvitem{}{
+        Italian (Mother tongue),
+        English (C1),
+        Polish (A2),
+        German (A2)
+    }
 
     \section{Spare time activities}
     \cvitem{Mathematics}{
         I participated in several mathematics challenges and olympic games (both alone and in team) during my high school years.
-        %also winning the semifinal of ``Mathematics Games'' (``Giochi matematici'') and participating in the national final at Bocconi University of Milan.
     }
     \cvitem{Hobbies}{
         Videogames: mainly strategic and management videogames or racing simulations.
