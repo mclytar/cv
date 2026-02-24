@@ -64,18 +64,18 @@
 
     \section{Current position}
     \cventry{Jun 25 -- Now}{Postdoctoral Researcher}{TU Darmstadt}{Germany}{}{
-        Supervisor: \emph{Prof. Sebastian Faust}\\
+        Supervisor: \emph{Prof. Sebastian Faust}
     }
 
     \section{Previous positions}
     \cventry{Jun 23 -- May 25}{Postdoctoral Researcher}{ETH Zurich}{Switzerland}{}{
-        Supervisor: \emph{Prof. Ueli Maurer}\\
+        Supervisor: \emph{Prof. Ueli Maurer}
     }
     \cventry{Mar 23 -- May 23}{Scientific Assistant}{ETH Zurich}{Switzerland}{}{
-        Supervisor: \emph{Prof. Ueli Maurer}\\
+        Supervisor: \emph{Prof. Ueli Maurer}
     }
     \cventry{Nov 21 -- Nov 22}{Visiting Researcher}{University of Warsaw}{Poland}{}{
-        Supervisor: \emph{Prof. Stefan Dziembowski}\\
+        Supervisor: \emph{Prof. Stefan Dziembowski}
     }
 
     \section{Education}
@@ -136,7 +136,7 @@
     {}{}
     \cventry{Dec 19}{Continuously Non-malleable Secret Sharing for General Access Structures}
     {Theory of Cryptography: 17th International Conference, TCC 2019}
-    {Nurnberg, Germany}
+    {Nuremberg, Germany}
     {}{}
 
     \subsection{Invited talks}
@@ -169,9 +169,13 @@
     \citesinthissection{2}
     \printbibliography[title={Publications in journals},heading = subbibliography,keyword = journal]
 
-    \newrefcontext[labelprefix=p]
-    \citesinthissection{0}
+    \newrefcontext[labelprefix=pp]
+    \citesinthissection{1}
     \printbibliography[title={Preprints},heading = subbibliography,keyword = preprint]
+
+    \newrefcontext[labelprefix=wip]
+    \citesinthissection{1}
+    \printbibliography[title={Work in progress (not yet published)},heading = subbibliography,keyword = wip]
 
     % \pubitem{EUROCRYPT:BDF24}
     % \pubitem{AC:BFMV22}
@@ -197,15 +201,15 @@
         Embedded Systems development (including experience with Arduino and ChipWhisperer).
     }
     \cvitem{Operating systems}{
-        Windows, GNU/Linux.
+        Windows, Linux.
     }
 
     \section{Languages}
     \cvitem{}{
         Italian (Mother tongue),
-        English (C1),
-        Polish (A2),
-        German (A2)
+        English (C1, self-assessed),
+        Polish (A2, self-assessed),
+        German (A2, \emph{certified})
     }
 
     \section{Spare time activities}
@@ -213,12 +217,20 @@
         I participated in several mathematics challenges and olympic games (both alone and in team) during my high school years.
     }
     \cvitem{Hobbies}{
-        Videogames: mainly strategic and management videogames or racing simulations.
+        Videogames: I enjoy factory-building and city-building videogames, as well as racing and flight simulation.
     }
     \cvitem{}{
-        Misc.: I am building an Intel 8086 computer by studying the specifications of the various components
-        and designing both hardware (motherboard, VGA) and software (BIOS, Kernel, OS, Utility software, C compiler, maybe a custom programming language, etc.).
+        Misc.: I am designing a computer based on the Intel 8086 CPU.
+        I studied the official documentation, the patent, and the reverse-engineering information about the 8086, understanding
+        its microarchitecture, the microcode, and the internal states, which I am using to build a simulator for the 8086.
+        I also studied the VGA standards for the video interface, learned to use CAD software to design the motherboard,
+        and designed a programmer for the EEPROM with Arduino.
+        Future tasks involve the development of a custom memory-safe language with a lightweight compiler that I will then use
+        to write the BIOS and the operating system.
     }
-    \cvitem{Interests}{Computers, math and science in general.}
+    \cvitem{Interests}{
+        I am deeply interested in mathematics and science in general:
+        I love to see the beauty of mathematical abstraction and to understand how our universe works.
+    }
 
 \end{document}
